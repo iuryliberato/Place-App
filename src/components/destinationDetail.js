@@ -3,7 +3,7 @@ import React from 'react'
 const DestinationDetail = ({ destination }) => {
 
 
-  const { attributes: { budget , safety, covid, name, airbnb_url: airbnbUrl, wikipedia_url: wikipediaUrl }, relationships } = destination.data
+  const { attributes: { budget, safety, covid, name, airbnb_url: airbnbUrl, wikipedia_url: wikipediaUrl }, relationships } = destination.data
 
   const knownFor = destination.included ? destination.included.filter(included => included.type === 'known_for') : []
 
@@ -14,55 +14,52 @@ const DestinationDetail = ({ destination }) => {
 
 
   return (
-    <div className='container'>
-      <div className="col-xxl-8 mx-auto  place-container">
-        <div className='place-wrapper'>
-          <h1 className="display-5 fw-bold lh-1 p-4">{name}</h1>
-          <hr />
-          
-          <div className='city-stats'>
-            <div className='budget city-stat badge' data-status={Object.values(budget)[0].text}>
+    <>
+      <div className='container row flex-lg-row-reverse align-items-center g-5 py-5'>
+        <div className="col-12 col-sm-6 col-lg-4">
+          <img src={photoData.attributes.image.large} alt={name} width="700" height="500" loading="lazy" />
+        </div>
+
+        <div className="col-lg-6">
+          <h1 className="display-5 pt-2 fw-bold lh-1 mb-3">{name}</h1>
+          <div className="pt-2">
+            <div data-status={Object.values(budget)[0].text}>
               <strong>Budget:</strong> {Object.values(budget)[0].text}
             </div>
-            <div className='safety city-stat badge' data-status={Object.values(safety)[0].text}>
+            <div data-status={Object.values(safety)[0].text}>
               <strong>Safety:</strong> {Object.values(safety)[0].text}
             </div>
-            <div className='covid city-stat badge' data-status={Object.values(covid)[0].text}>
+            <div data-status={Object.values(covid)[0].text}>
               <strong>Covid risk:</strong> {Object.values(covid)[0].text}
             </div>
           </div>
-          
-          <div className="city row g-5">
-            <div className="col-7">
-              <img className="img-fluid" src={photoData.attributes.image.large} alt={name} />
-              
-            </div>
-            <div className="col-5 city-info">
-              
-              <div className='info-container'>
-                <h3 > Find out more:</h3>
-                <div className="d-grid gap-2 d-md-flex mt-2 justify-content-md-start">
-                  <a className='btn btn-primary btn-lg px-4 me-md-2 airBnB' href={airbnbUrl} target="_blank" rel="noreferrer">Search on AirBnb</a>
-                  <a className='btn btn-primary btn-lg px-4 me-md-2 wikipedia' href={wikipediaUrl} target="_blank" rel="noreferrer">Wikipedia</a>
-                </div>
-    
-                <hr />
-                <div className='known-for mt-2'>
-                  
-                  {knownFor.map(item =>
-                    <div className="badge bg-secondary me-1 mb-1" key={item.id}>
-                      {item.attributes.name}
-                      <img src={item.attributes.icon + '-48.png'} alt={item.attributes.name} width='30px' />
-                    </div>
-                  )}
-                </div>
-              </div>
-  
-            </div>
+          <div className='known-for mt-2 lead'>
+            {knownFor.map(item =>
+              <span className="correct-badges" key={item.id}>
+                {item.attributes.name}
+                <img src={item.attributes.icon + '-48.png'} alt={item.attributes.name} width='30px' />
+              </span>
+
+            )}
+          </div>
+          <hr />
+
+          <h3 > Find out more:</h3>
+          <div className="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a className='btn btn-primary btn-lg px-4 me-md-2 btn-danger airBnB' href={airbnbUrl} target="_blank" rel="noreferrer">Search on AirBnb</a>
+            <a className='btn btn-primary btn-lg px-4 me-md-2 wikipedia' href={wikipediaUrl} target="_blank" rel="noreferrer">Wikipedia</a>
           </div>
         </div>
       </div>
-    </div>
+      <footer className='fixed-bottom'>
+
+        <div className='nav-item'>
+          <p>&copy; Iury and Kate 2021</p>
+        </div>
+
+      </footer>
+
+    </>
   )
 
 }

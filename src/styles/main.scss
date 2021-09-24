@@ -1,11 +1,46 @@
-@import "~bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/bootstrap";
 
 .navbar {
   a {
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+      letter-spacing: 0.5px;
   }
+}
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(214, 59, 59);
+  font-family: 'Patua One', cursive;
+}
+
+.view {
+  font-family: 'Patua One', cursive;
+}
+.info{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.known-for {
+  padding-top: 15px;
+  height: 250px;
+  width: 400px;
+}
+.correct-badges {
+  border-radius: 5px;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 5px;
+  padding: 6px;
+  background-color: rgb(185, 185, 184);
+  color: white;
 }
 
 .site-wrapper {
@@ -17,18 +52,22 @@
   background-size: cover;
   min-height: (100vh);
 }
-.search-body  , .single-destination-body {
-  background: rgb(25,55,94);
-  background: linear-gradient(270deg, rgba(25,55,94,1) 47%, rgba(29,118,140,1) 100%);
+.single-destination-body {
+ 
   min-height: (100vh);
   display: flex;
   flex-direction: column;
 }
+.search-body {
+ background-color:rgb(230, 230, 230);
+  min-height: (100vh);
+  padding-bottom: 115px;
+}
 .search-functions{
-  background-color: rgb(255, 255, 255 , 0.6);
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 20px;
   width: 100vw;
-  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 2px 2px 2px rgb(255, 255, 255);
   margin-bottom: 20px;
   p{
     display:flex;
@@ -39,7 +78,7 @@
   input{
     padding: 10px;
     text-align: center;
-    font-size: 25px;
+    font-size: 28px;
     width: 420px;
     border: none;
     border-radius: 5px;
@@ -47,54 +86,25 @@
   }
 }
 
-.card {
-  padding: 0;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
-  background-color: rgb(255, 255, 255 , 0.6);
-  color: rgba(25,55,94);
-  
-  .card-header{
-    background-color: rgb(255, 255, 255);
-    h4 {
-      margin: auto;
-    }
+  .cardPos {
+    display: flex;
+    flex-direction: column;
   }
   .card-text {
     padding: 10px;
     display: flex;
     .rating {
       width: fit-content;
-      color: white;
-      background-color: rgba(25,55,94);
-      padding: 8px;
+      color: rgb(20, 19, 19);
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      height: 100px;
       border-radius: 8px;
-
-      h2[data-status='0']{
-        color: red;
-      }
-      h2[data-status='1']{
-        color: orange;
-      }
-      h2[data-status='2']{
-        color: rgb(255, 234, 0);
-      }
-      h2[data-status='3']{
-        color: rgb(255, 255, 0)
-      }
-      h2[data-status='4']{
-        color: lightgreen;
-      }
-      h2[data-status='5']{
-        color: rgb(10, 191, 10);
-      }
+      font-size: 50x;
     }
-    p {
-      margin: 8px;
-    }
+   
   }
-}
+
 
 
 h1, h2, h3 {
@@ -108,12 +118,13 @@ h1, h2, h3 {
   font-family: 'Patua One', cursive;
   display: flex;
   justify-content: center;
+  letter-spacing: 0.4px;
 }
 .destinationBar {
   background-color: rgba(255, 255, 255, 0.6);
     padding: 20px;
     width: 100vw;
-    box-shadow: 8px 8px 8px rgb(0 0 0 / 60%);
+   
     margin-bottom: 20px;
 }
 
@@ -134,20 +145,24 @@ h1, h2, h3 {
 }
 
 footer{
+  background-color: rgba(189, 189, 189, 0.9);
+  height: 35px;
+  display: flex;
   justify-content: center;
+  letter-spacing: 0.5px;
   p {
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
-    align-self: center;
   }
 }
+
 .city{
   margin: 0;
 }
 .city-info{
   border-radius: 5px;
   border: none;
-  background-color: rgb(255, 255, 255 , 0.6);
+  
   padding: 0px;
   display:flex;
   flex-direction: column;
@@ -162,76 +177,5 @@ footer{
   justify-content: space-around;
 }
 
-.city-stat {
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 20px;
-  font-weight: 400;
-  width: 200px;
-}
-.budget{
-  &.city-stat[data-status='Extreme'],&.city-stat[data-status='Very High']{
-    background-color: red;
-  }
-  &.city-stat[data-status='High']{
-    background-color: rgb(255, 119, 0);
-  }
-  &.city-stat[data-status='Medium High']{
-    background-color: orange;
-  }
-  &.city-stat[data-status='Medium']{
-    background-color: rgb(255, 255, 0);
-    color: black;
-  }
-  &.city-stat[data-status='Medium Low']{
-    background-color: lightgreen;
-    color: black;
-  }
-  &.city-stat[data-status='Very Low']{
-    background-color: rgb(10, 191, 10);
-  }
-}
-.covid{
-  &.city-stat[data-status='Extreme'],&.city-stat[data-status='Critical']{
-    background-color: red;
-  }
-  &.city-stat[data-status='High']{
-    background-color: rgb(255, 119, 0);
-  }
-  &.city-stat[data-status='Medium']{
-    background-color: rgb(255, 255, 0);
-    color: black;
-  }
-  &.city-stat[data-status='Low']{
-    background-color: rgb(10, 191, 10);
-  }
-}
-.safety{
-  &.city-stat[data-status='Very Low']{
-    background-color: red;
-  }
-  &.city-stat[data-status='Low']{
-    background-color: orange;
-  }
-  &.city-stat[data-status='Medium']{
-    background-color: rgb(255, 255, 0);
-    color: black;
-  }
-  &.city-stat[data-status='High']{
-    background-color: lightgreen;
-    color: black;
-  }
-  &.city-stat[data-status='Very High']{
-    background-color: rgb(10, 191, 10);
-  }
-}
-.place-container{
-  background-color: white;
-  padding-bottom: 30px;
-  margin-top: 50px;
-  border-radius: 5px;
-  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.6);
-  .place-wrapper{
-    padding: 10px;
-  }
-}
+
+

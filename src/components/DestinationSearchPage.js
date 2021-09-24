@@ -10,11 +10,13 @@ const DestinationSearchPage = () => {
 
   const [error, setError] = useState(false)
 
+  const [includedInfo, setIncludedInfo] = useState([])
 
+  console.log(includedInfo)
   useEffect(() => {
     const getData = async () => {
       try {
-        
+
         const { data } = await axios.get(
           `https://api.roadgoat.com/api/v2/destinations/auto_complete?q=${search ? search : 'New'}`,
           {
@@ -24,9 +26,11 @@ const DestinationSearchPage = () => {
           }
         )
         // setLoading(false)
+
         setDestinations(data.data)
-        console.log(data.data)
-        
+        setIncludedInfo(data.included)
+        console.log(data)
+
       } catch (error) {
         setError(true)
       }
@@ -38,39 +42,54 @@ const DestinationSearchPage = () => {
 
   const handleSearch = (event) => {
     setSearch(event.target.value.toLowerCase())
-    
+
   }
 
 
   return (
+    <>
+      <section className="search-body text-center">
 
-    <section className="search-body text-center">
-      
-      <div className='search-functions destinationBar'>
-        <p className='destinationSearch'>Find your favourite place:  <input type='text' placeholder='Where do you want to go?' id='search-field' onInput={handleSearch}></input></p> 
-      </div>
-    
-      <div className='searched-destinations mt-4 container'>
-        <div className='row'>
-          
-          {destinations.length > 0 ?
-            destinations.map(destination => {
-              return <DestinationCard key={destination.id} destination={destination}/>
-            })
-            :
-            <>
-              {error ?
-                <h2 className='display-5 text-center'> Something went wrong!</h2>
-                :
-                <h2 className='display-5 text-center'> Loading...</h2>
-              }
-            </>
-          }
+        <div className='search-functions destinationBar'>
+          <p className='destinationSearch'> 🕵️‍♂️ Find your favourite place:  <input type='text' placeholder='Where do you want to go?' id='search-field' onInput={handleSearch}></input></p>
         </div>
-      </div>
-      
-    </section>
 
+        <div className='searched-destinations mt-4 container'>
+          <div className='row gx-4'>
+
+            {destinations.length > 0 ?
+              destinations.map(destination => {
+                let photoData
+                try {
+                  const photoId = destination.relationships.featured_photo.data.id
+                  photoData = includedInfo.find(included => included.type === 'photo' && included.id === photoId)
+                } catch (e) {
+                  console.log(e)
+                }
+
+
+                return <DestinationCard key={destination.id} destination={destination} photo={photoData} />
+              })
+              :
+              <>
+                {error ?
+                  <h2 className='display-5 text-center'> Something went wrong!</h2>
+                  :
+                  <h2 className='display-5 text-center'> Loading...</h2>
+                }
+              </>
+            }
+          </div>
+        </div>
+
+      </section>
+
+      <footer className='fixed-bottom'>
+        <div className='nav-item'>
+          <p>&copy; Made by Iury and Kate 2021</p>
+        </div>
+      </footer>
+    </>
 
   )
 }
