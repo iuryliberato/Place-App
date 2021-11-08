@@ -1,20 +1,38 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) GA London React Template
+# Bon Voyage
 
-## Using NPM
+## Technologies used
+### HTML 
+- Display Contents
+- Favicon to display in the browser tab.
 
-`yarn start` or `yarn dev`  to run the development server
+### CSS
+- Style website with colors, frames and flex containers.
 
-`yarn build` to create a build directory
+### JavaScript / React
 
-## Using Yarn
 
-`yarn start` or `yarn dev`  to run the development server
+### Bootstrap
+- Layout the website.
 
-`yarn build` to create a build directory
+## The approach taken:
+### When load the page:
+- Initially you will land in a Home page where there is a message and a button which when clicked will take you to search page where you can search a destination.
 
-### ⚠️
+### Search page:
+- while you type your destination, it will filter and show all of the matching destinations in a card with a few informations and a button to link to the single destination page.
 
-To prevent the `failed-to-compile` issue for linter errors like `no-unsed-vars`, rename the `.env.example` to `.env` and restart your development server. Note this will only change the behaviour of certain linter errors to now be warnings, and is added just to allow your code to compile in development. These errors should still be fixed and other errors will still result in the code being unable to compile
+### Single Destination page:
+- When you land in the single destination page you should see some information about the destination chosen.
+- A image of the destination chosen.
+- A few tags that matches with the destination.
+- A button that links your to AirBnb.
+- A button that links you to Wikipedia to find more information about the destination chosen.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation instructions:
+- Run 'yarn start' from your VisualCode terminal.
+- Or Click in the following link from your computer.
+- https://iury-api-project.netlify.app/
 
+## Wins and Difficulties:
+- Managed to get the tags and images from an existent API.
+- Unfortunatly the API was missing some data. It was a lesson to undertand and learn how to look properly in a exitente API before choosing.
