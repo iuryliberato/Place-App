@@ -1,5 +1,6 @@
 # Bon Voyage
-##Introduction: Built in a two day paired hackathon, this application lets users explore the world. This front-end React app pulls data from the <a href=“https://developer.roadgoat.com/#introduction” rel=“noreferrer” target=“_blank”>Road Goat API</a> using Axios requests to display up to date information about places around the world.
+## Introduction: 
+- Built in a two day paired hackathon, this application lets users explore the world. This front-end React app pulls data from the <a href=“https://developer.roadgoat.com/#introduction” rel=“noreferrer” target=“_blank”>Road Goat API</a> using Axios requests to display up to date information about places around the world
 
 ## Technologies used
 ### HTML 
